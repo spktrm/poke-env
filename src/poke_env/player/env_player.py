@@ -458,4 +458,5 @@ class Gen8EnvSinglePlayer(EnvPlayer, ABC):
         elif 0 <= action - 16 < len(battle.available_switches):
             return self.agent.create_order(battle.available_switches[action - 16])
         else:
+            print("random")
             return self.agent.choose_random_move(battle)

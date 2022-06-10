@@ -3,7 +3,7 @@
 """
 
 import asyncio
-import orjson  # pyre-ignore
+import orjson
 import random
 
 from abc import ABC
@@ -700,7 +700,11 @@ class Player(PlayerNetwork, ABC):
         :rtype: str
         """
         return BattleOrder(
-            order, mega=mega, move_target=move_target, z_move=z_move, dynamax=dynamax
+            order,
+            mega=mega,
+            move_target=move_target,
+            z_move=z_move,
+            dynamax=dynamax,
         )
 
     @property

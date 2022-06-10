@@ -336,8 +336,8 @@ class AbstractBattle(ABC):
 
         self._fields[field] = self.turn
 
-    def _finish_battle(self) -> None:
-        if self._save_replays:
+    def _finish_battle(self, write_file: bool = False) -> None:
+        if self._save_replays and write_file:
             if self._save_replays is True:
                 folder = "replays"
             else:

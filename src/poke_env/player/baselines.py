@@ -6,6 +6,11 @@ from poke_env.player.random_player import RandomPlayer  # noqa: F401
 
 
 class MaxBasePowerPlayer(Player):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.packed_team = kwargs.pop("team", None)
+
     def choose_move(self, battle):
         if battle.available_moves:
             best_move = max(battle.available_moves, key=lambda move: move.base_power)
@@ -27,6 +32,11 @@ class SimpleHeuristicsPlayer(Player):
     HP_FRACTION_COEFICIENT = 0.4
     SWITCH_OUT_MATCHUP_THRESHOLD = -2
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.packed_team = kwargs.pop("team", None)
+
     def _estimate_matchup(self, mon, opponent):
         score = max([opponent.damage_multiplier(t) for t in mon.types if t is not None])
         score -= max(
@@ -43,6 +53,7 @@ class SimpleHeuristicsPlayer(Player):
         return score
 
     def _should_dynamax(self, battle, n_remaining_mons):
+        return False
         if battle.can_dynamax:
             # Last full HP mon
             if (

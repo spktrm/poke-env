@@ -4,6 +4,7 @@ import re
 import json
 
 for gen in range(1, 9):
+
     if gen != 8:
         # Fetch latest version
         data = requests.get(
@@ -54,9 +55,6 @@ for gen in range(1, 9):
         pattern = function_title_match + r"\(\) \{\s*\}"
         sub = r'"\1": "\1"'
         data = re.sub(pattern, sub, data, flags=re.MULTILINE)
-    
-    # Null arrow functions
-    data = re.sub(r"\(\) => null", r"null", data)
 
     # Remove incorrect commas
     data = re.sub(r",\n( *)\}", r"\n\1}", data)

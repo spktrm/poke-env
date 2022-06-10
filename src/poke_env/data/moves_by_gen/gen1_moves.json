@@ -599,8 +599,7 @@
         },
         "category": "Status",
         "condition": {
-            "noCopy": true,
-            "onRestart": null
+            "noCopy": true
         },
         "contestType": "Cute",
         "flags": {

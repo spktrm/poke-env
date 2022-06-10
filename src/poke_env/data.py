@@ -2,7 +2,7 @@
 """This module contains constant values used in the repository.
 """
 
-import orjson  # pyre-ignore
+import orjson
 import os
 
 from functools import lru_cache
@@ -337,3 +337,122 @@ with open(
     )
 ) as f:
     REPLAY_TEMPLATE = f.read()
+
+
+with open(
+    os.path.join(os.path.dirname(os.path.realpath(__file__)), "data", "items.json")
+) as f:
+    ITEMS = orjson.loads(f.read())
+
+
+with open(
+    os.path.join(os.path.dirname(os.path.realpath(__file__)), "data", "abilities.json")
+) as f:
+    ABILITIES = orjson.loads(f.read())
+
+
+def norm(value, max):
+    return (2 * value / max) - 1
+
+
+in_every_move = {
+    "accuracy",
+    "category",
+    "flags",
+    "type",
+    "current_pp",
+    "max_pp",
+    "base_power",
+    "priority",
+    "target",
+}
+
+MOVE_TARGETS = sorted(list(set([move["target"] for move in MOVES.values()])))
+MOVE_PRIORITIES = sorted(list(set([move["priority"] for move in MOVES.values()])))
+MOVE_ACCURACY = sorted(list(set([move["accuracy"] for move in MOVES.values()])))
+MOVE_FLAGS = {}
+for move in MOVES.values():
+    MOVE_FLAGS.update(move["flags"])
+MOVE_FLAGS = sorted(list(MOVE_FLAGS))
+
+
+def str_to_id(datum, str):
+    id = list(datum).index(str)
+    return id
+
+
+POKEMON_PROPS = [
+    "ability",
+    "active",
+    "base_stats",
+    "boosts",
+    "current_hp_fraction",
+    "effects",
+    "fainted",
+    "first_turn",
+    "gender",
+    "is_dynamaxed",
+    "item",
+    "level",
+    "moves",
+    "must_recharge",
+    "possible_abilities",
+    "preparing",
+    "protect_counter",
+    "revealed",
+    "species",
+    "status",
+    "status_counter",
+    "types",
+    "weight",
+]
+BATTLE_PROPS = [
+    "can_dynamax",
+    "can_mega_evolve",
+    "can_z_move",
+    "force_switch",
+    "maybe_trapped",
+    "opponent_can_dynamax",
+    "opponent_can_mega_evolve",
+    "opponent_can_z_move",
+    "trapped",
+]
+
+BOOSTS = [
+    "accuracy",
+    "atk",
+    "def",
+    "evasion",
+    "spa",
+    "spd",
+    "spe",
+]
+
+from statistics import mean, stdev
+
+BASESTATS = {
+    "hp": {
+        "mean": mean([pokemon["baseStats"]["hp"] for pokemon in POKEDEX.values()]),
+        "std": stdev([pokemon["baseStats"]["hp"] for pokemon in POKEDEX.values()]),
+    },
+    "atk": {
+        "mean": mean([pokemon["baseStats"]["atk"] for pokemon in POKEDEX.values()]),
+        "std": stdev([pokemon["baseStats"]["atk"] for pokemon in POKEDEX.values()]),
+    },
+    "def": {
+        "mean": mean([pokemon["baseStats"]["def"] for pokemon in POKEDEX.values()]),
+        "std": stdev([pokemon["baseStats"]["def"] for pokemon in POKEDEX.values()]),
+    },
+    "spa": {
+        "mean": mean([pokemon["baseStats"]["spa"] for pokemon in POKEDEX.values()]),
+        "std": stdev([pokemon["baseStats"]["spa"] for pokemon in POKEDEX.values()]),
+    },
+    "spd": {
+        "mean": mean([pokemon["baseStats"]["spd"] for pokemon in POKEDEX.values()]),
+        "std": stdev([pokemon["baseStats"]["spd"] for pokemon in POKEDEX.values()]),
+    },
+    "spe": {
+        "mean": mean([pokemon["baseStats"]["spe"] for pokemon in POKEDEX.values()]),
+        "std": stdev([pokemon["baseStats"]["spe"] for pokemon in POKEDEX.values()]),
+    },
+}

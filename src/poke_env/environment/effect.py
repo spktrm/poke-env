@@ -122,6 +122,7 @@ class Effect(Enum):
     PURSUIT = auto()
     QUASH = auto()
     QUICK_CLAW = auto()
+    QUICK_DRAW = auto()
     QUICK_GUARD = auto()
     REFLECT = auto()
     RIPEN = auto()

@@ -1342,8 +1342,7 @@
         },
         "category": "Status",
         "condition": {
-            "noCopy": true,
-            "onRestart": null
+            "noCopy": true
         },
         "contestType": "Cute",
         "flags": {
@@ -2413,7 +2412,6 @@
         "onTry": "onTry",
         "pp": 20,
         "priority": -3,
-        "priorityChargeCallback": "priorityChargeCallback",
         "secondary": null,
         "target": "normal",
         "type": "Fighting"
@@ -6612,6 +6610,7 @@
     "sleeptalk": {
         "accuracy": true,
         "basePower": 0,
+        "beforeMoveCallback": "beforeMoveCallback",
         "category": "Status",
         "contestType": "Cute",
         "flags": {},
@@ -6931,9 +6930,9 @@
         "basePower": 0,
         "category": "Status",
         "condition": {
-            "onEntryHazard": "onEntryHazard",
             "onSideRestart": "onSideRestart",
-            "onSideStart": "onSideStart"
+            "onSideStart": "onSideStart",
+            "onSwitchIn": "onSwitchIn"
         },
         "contestType": "Clever",
         "flags": {},
