@@ -44,7 +44,7 @@ pathtools==0.1.2
 pipreqs==0.4.11
 platformdirs==2.5.2
 pluggy==1.0.0
--e git+https://github.com/spktrm/poke-env.git@8b8756b67ff3a8d0155706c3468daabea6f4466f#egg=poke_env
+-e git+https://github.com/hsahovic/poke-env
 promise==2.3
 protobuf==3.20.1
 psutil==5.9.1
