@@ -456,3 +456,12 @@ BASESTATS = {
         "std": stdev([pokemon["baseStats"]["spe"] for pokemon in POKEDEX.values()]),
     },
 }
+
+EFFECTIVENESS = {
+    0: 0,
+    0.25: 1,
+    0.5: 2,
+    1.0: 3,
+    2.0: 4,
+    4.0: 5,
+}
