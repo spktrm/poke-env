@@ -587,7 +587,7 @@ class Pokemon:
         :rtype: float
         """
         if self.current_hp:
-            return self.current_hp / self.max_hp
+            return float(self.current_hp) / float(self.max_hp)
         return 0
 
     @property

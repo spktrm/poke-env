@@ -315,9 +315,7 @@ class OpenAIGymEnv(Env, ABC):  # pyre-ignore
         """
         return {}
 
-    def step(
-        self, action: ActionType
-    ) -> Tuple[ObservationType, float, bool, dict]:  # pyre-ignore  # pragma: no cover
+    def step(self, action: ActionType):
         if not self.current_battle:
             return self.reset(), 0.0, False, {}  # pyre-ignore
         if self.current_battle.finished:
