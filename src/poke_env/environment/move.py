@@ -415,7 +415,7 @@ class Move:
         :return: The move's max pp.
         :rtype: int
         """
-        return self.entry["pp"]
+        return int(self.entry["pp"] * 8 / 5)
 
     @property
     def n_hit(self) -> Tuple:

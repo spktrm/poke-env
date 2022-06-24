@@ -370,6 +370,7 @@ in_every_move = {
 MOVE_TARGETS = sorted(list(set([move["target"] for move in MOVES.values()])))
 MOVE_PRIORITIES = sorted(list(set([move["priority"] for move in MOVES.values()])))
 MOVE_ACCURACY = sorted(list(set([move["accuracy"] for move in MOVES.values()])))
+
 MOVE_FLAGS = {}
 for move in MOVES.values():
     MOVE_FLAGS.update(move["flags"])
@@ -465,3 +466,6 @@ EFFECTIVENESS = {
     2.0: 4,
     4.0: 5,
 }
+
+RAW_MOVE_FLAGS = [i for o in [set(move.keys()) for move in MOVES.values()] for i in o]
+MOVE_FLAGS_COUNT = {key: RAW_MOVE_FLAGS.count(key) for key in list(set(RAW_MOVE_FLAGS))}
